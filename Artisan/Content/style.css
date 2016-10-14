@@ -495,11 +495,13 @@ body {
 }
 .about_us .content_about p {
 	margin-top: 15px;
-	width: 634px;
+	margin-left: 21px;
+	width: 620px;
 	font-family: MS Sans Serif;
 	line-height: 20px;
 	color: white;
 	font-size: 16px;	
+	text-align: justify;
 }
 .about_us .content_about p span {
 	color: white;
@@ -508,9 +510,12 @@ body {
 	text-transform: uppercase;
 }
 .about_us .content_about img {
-	margin-top: 0px;
+	margin-top: 15px;
 	margin-left: 21px;
 	margin-bottom: 20px;
+	border-radius: 12px;
+	border: 1px solid white;
+
 }
 .partners {
 	min-width: 1200px;
@@ -1020,6 +1025,7 @@ body {
 .pageproduct .listofproduct img {
 	border-radius: 12px;
 	height: 300px;
+	border: 1px solid white;
 }
 .pageproduct .listofproduct .contentprod {
 	width: 500px;
