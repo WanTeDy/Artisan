@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Lobster Two';
+    src: local('Lobster Two'), local('LobsterTwo'), url('lobstertwo.woff2') format('woff2'), url('lobstertwo.woff') format('woff'), url('lobstertwo.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lobster Two';
+    src: local('Lobster Two Italic'), local('LobsterTwo-Italic'), url('lobstertwoitalic.woff2') format('woff2'), url('lobstertwoitalic.woff') format('woff'), url('lobstertwoitalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Lobster Two';
+    src: local('Lobster Two Bold'), local('LobsterTwo-Bold'), url('lobstertwobold.woff2') format('woff2'), url('lobstertwobold.woff') format('woff'), url('lobstertwobold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Lobster Two';
+    src: local('Lobster Two Bold Italic'), local('LobsterTwo-BoldItalic'), url('lobstertwobolditalic.woff2') format('woff2'), url('lobstertwobolditalic.woff') format('woff'), url('lobstertwobolditalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Artisan.Models.Category>
+@{
+    Layout = "AdminLayout.cshtml";
+    
+}
+
+<div class="shell">
+
+
+    <!-- Main -->
+    <div id="main">
+        <div class="cl">&nbsp;</div>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Box -->
+            <div class="box">
+                <!-- Box Head -->
+                <div class="box-head">
+                    <h2 class="left">Список категорий</h2>
+                    <div class="right">
+                        <a href="/Webmaster/AddCategory" class="ico">Добавить категорию</a>
+                        <!--<label>search articles</label>
+                        <input type="text" class="field small-field" />
+                        <input type="submit" class="button" value="search" />-->
+                    </div>
+                </div>
+                <!-- End Box Head -->
+                <!-- Table -->
+                @if (Model.Count() > 0)
+                {
+                    <div class="table">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>                                
+                                <th width="100" class="ac">Изображение</th>
+                                <th>Описание изображения</th>
+                                <th>Название</th>
+                                <th width="110" class="ac">Управление</th>
+                            </tr>
+                            @foreach (var cat in Model)
+                            {
+                                <tr>
+                                    <td>@ViewBag.cloud.Api.UrlImgUp.Transform(new CloudinaryDotNet.Transformation().Width(100).Height(100).Crop("scale")).BuildImageTag(cat.Image.PublicId)</td>                                      
+                                    <td><h3>@cat.Image.Description</h3></td>    
+                                    <td><h3><a href="/Webmaster/Categories/@cat.Id">@cat.Name</a></h3></td>                                    
+                                    <td><a href="/Webmaster/DeleteCategory/@cat.Id" class="ico del" onclick="return confirm('Удаляем категорию?')">Удалить</a><a href="/Webmaster/EditCategory/@cat.Id" class="ico edit">Редактировать</a></td>
+                                </tr>
+                            }                            
+                        </table>
+                    </div>
+                <!-- Table -->
+                }
+                else
+                {
+                    <div class="alert-warning"> Список категорий пуст
+                    </div>
+                }
+            </div>
+            <!-- End Box -->
+            <!-- Box -->
+            <div class="box">
+
+            </div>
+            <!-- End Box -->
+
+        </div>
+        <!-- End Content -->
+
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <!-- Main -->
+</div>

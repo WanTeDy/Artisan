@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    @Scripts.Render("~/bundles/jquery164")
+    @RenderSection("scripts", required: false)
+    @Styles.Render("~/Content/reset.css")
+    @Styles.Render("~/Content/style.css")
+    <script>
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() != 0) {
+                    $('#toTop').fadeIn();
+                } else {
+                    $('#toTop').fadeOut();
+                }
+            });
+            $('#toTop').click(function () {
+                $('body,html').animate({ scrollTop: 0 }, 800);
+            });
+        });
+    </script>
+
+
+    <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>-->
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="socialnetworks">
+                <a href="#" class="fb"></a>
+                <a href="#" class="vk"></a>
+                <a href="#" class="insta"></a>
+            </div>
+            <div class="logo">
+                <a href="/"><img src="~/Content/image/logo.png"></a>
+            </div>
+            <div class="contactinfo">
+                <p><img src="~/Content/image/tel.png">+380632666010</p>
+                <p><img src="~/Content/image/tel.png">+380632666010</p>
+                <p class="i"><img src="~/Content/image/mail.png">artisan@gmail.com</p>
+                <a href="/Email" id="blink">Обратный звонок</a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a>Автоматика ▾</a>
+                        <ul>
+                            <li>@Html.ActionLink("Для Гаражных ворот", "Garage", "Automatics")</li>
+                            <li>@Html.ActionLink("Для Откатных ворот", "Sliding", "Automatics")</li>
+                            <li>@Html.ActionLink("Для Распашных ворот", "Swing", "Automatics")</li>
+                            <li>@Html.ActionLink("Аксессуары", "Accessories", "Automatics")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>Ворота ▾</a>
+                        <ul>
+                            <li>@Html.ActionLink("Гаражные ворота", "Garage", "Gates")</li>
+                            <li>@Html.ActionLink("Откатные ворота", "Sliding", "Gates")</li>
+                            <li>@Html.ActionLink("Распашные ворота", "Swing", "Gates")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Роллеты", "Index", "Rollets")</li>
+                    <li>@Html.ActionLink("Шлагбаумы", "Index", "Barriers")</li>
+                    <li>@Html.ActionLink("Фурнитура", "Index", "Implements")</li>
+                    <li>@Html.ActionLink("Ремонт", "Index", "Repairs")</li>
+                    <li>@Html.ActionLink("Фото работ", "Index", "Gallery")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <div class="container">
+        <div class="footer">
+            <div id="toTop"></div>
+            <div class="logo">
+                <a href="/"><img src="~/Content/image/logo.png"></a>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a>Автоматика ▴</a>
+                        <ul>
+                            <li>@Html.ActionLink("Для Гаражных ворот", "Garage", "Automatics")</li>
+                            <li>@Html.ActionLink("Для Откатных ворот", "Sliding", "Automatics")</li>
+                            <li>@Html.ActionLink("Для Распашных ворот", "Swing", "Automatics")</li>
+                            <li>@Html.ActionLink("Аксессуары", "Accessories", "Automatics")</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a>Ворота ▴</a>
+                        <ul id="navgate">
+                            <li>@Html.ActionLink("Гаражные ворота", "Garage", "Gates")</li>
+                            <li>@Html.ActionLink("Откатные ворота", "Sliding", "Gates")</li>
+                            <li>@Html.ActionLink("Распашные ворота", "Swing", "Gates")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Роллеты", "Index", "Rollets")</li>
+                    <li>@Html.ActionLink("Шлагбаумы", "Index", "Barriers")</li>
+                    <li>@Html.ActionLink("Фурнитура", "Index", "Implements")</li>
+                    <li>@Html.ActionLink("Ремонт", "Index", "Repairs")</li>
+                    <li>@Html.ActionLink("Фото работ", "Index", "Gallery")</li>
+                </ul>
+            </div>
+            <div class="socialnetworks">
+                <a href="#" class="fb"></a>
+                <a href="#" class="vk"></a>
+                <a href="#" class="insta"></a>
+            </div>
+            <div class="services">
+                <h3>Услуги</h3>
+                <a href="">Установка</a>
+                <a href="/Repairs">Ремонт</a>
+                <a href="">Демонтаж</a>
+            </div>
+            <div class="contactinfo">
+                <h3>Контакты</h3>
+                <p><img src="~/Content/image/tel.png">+380632666010</p>
+                <p><img src="~/Content/image/tel.png">+380632666010</p>
+                <p class="i"><img src="~/Content/image/mail.png">artisan@gmail.com</p>
+            </div>
+            <div class="dev">
+                <p>Web site developed by ******studio</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

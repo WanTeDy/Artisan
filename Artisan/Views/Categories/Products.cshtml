@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Artisan.Models.Product>
+<div class="container">
+    <div class="pageproduct">
+        <div class="automation">
+            <div class="way">
+                <div class="wayway">
+                    <a href="/">Главная</a>
+                    <pre> </pre>
+                    <p>/</p>
+                    <pre> </pre>
+                    <a href="#">@ViewBag.Category.Name</a>
+                </div>
+            </div>
+
+
+            <div class="listofproduct">
+                <div class="product_content">
+                    @{ int n = 1;}
+                    @foreach (var pr in Model)
+                    {
+                        string s1 = "num" + n;
+                        <div class="@s1">
+                            @{ string price = " дог."; }
+                            <div class="image">
+                                @ViewBag.cloud.Api.UrlImgUp.Transform(new CloudinaryDotNet.Transformation().Width(400).Height(300).Crop("scale")).BuildImageTag(pr.Image.PublicId)
+                            </div>
+                            <div class="contentprod">
+                                <h4>@pr.Name</h4>
+                                <p>@pr.Description</p>
+                                @if (pr.Price != 0)
+                                {
+                                    price = pr.Price + " евро";
+                                }
+                                <p class="cost">Цена @price</p>
+                                @{  n++; }
+                            </div>
+                        </div>
+                    }
+                    <div class="seotext">
+                        <p>@ViewBag.Category.Name</p>
+                        <p>@ViewBag.Category.Description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model Artisan.Models.Mail
+<div class="container">
+    <div class="feedbackform">
+        <div class="way">
+            <div class="wayway">
+                <a href="/">Главная</a>
+                <pre> </pre>
+                <p>/</p>
+                <pre> </pre>
+                <a href="#">Обратная связь</a>
+            </div>
+        </div>
+        <div class="h2">
+            <h2>Заказать обратный звонок</h2>
+        </div>
+        <div class="form">
+            @using (Html.BeginForm("Index", "Email", FormMethod.Post, new { @id = "application" }))
+            {                    
+                @Html.TextBoxFor(model => model.Name, new { @placeholder = "Введите ваше имя", @id = "applicationName", @maxlength = "20" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+                  
+                @Html.TextBoxFor(model => model.EmailTo, new { @placeholder = "Введите ваш E-mail", @id = "applicationEmail", @maxlength = "35" })
+                @Html.ValidationMessageFor(model => model.EmailTo, "", new { @class = "text-danger" })
+
+                 
+                @Html.TextBoxFor(model => model.Telephone, new { @placeholder = "Введите ваш телефон", @id = "applicationTelephone", @maxlength = "13" })
+                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+
+                  
+                @Html.TextAreaFor(model => model.Message, new { @placeholder = "Ваше сообщение", @id = "applicationText", @rows = "10", @cols = "45" })
+
+                <input class="applicationButton" data-type="submit" type="submit" value="Отправить заявку" />                
+            }
+        </div>
+    </div>
+</div>

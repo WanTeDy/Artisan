@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "AdminLayout.cshtml"; 
+ }
+
+<div class="shell">
+
+
+    <!-- Main -->
+    <div id="main">
+        <div class="cl">&nbsp;</div>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Box -->
+            <div class="box">
+                <!-- Box Head -->
+                <div class="box-head">
+                    <h2 class="left">Загрузка фотографии</h2>                    
+                </div>
+                <!-- End Box Head -->
+                @using (Html.BeginForm("AddGallery", "Webmaster", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    <fieldset>
+                        <legend>Загрузка фотографии</legend>
+                        @Html.AntiForgeryToken()
+                        
+                        <p>
+                            Описание изображения <br />
+                            <input type="text" name="description" value="@ViewBag.description"/>
+                            @ViewBag.Error
+                        </p>
+
+                        <p>
+                            Изображение  <br />
+                           
+                            <input type="file" accept="image/*" class="buttons" name="masUpload" multiple="multiple" /> @ViewBag.upload<br>
+                        </p>
+                        <p>
+                            <input type="submit" class="buttons" value="Загрузить" />
+                        </p>
+                    </fieldset>
+                }
+
+            </div>
+            <!-- End Box -->
+            <!-- Box -->
+            <div class="box">
+
+            </div>
+            <!-- End Box -->
+
+        </div>
+        <!-- End Content -->
+
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <!-- Main -->
+</div>

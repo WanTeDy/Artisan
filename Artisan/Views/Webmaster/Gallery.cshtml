@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Artisan.Models.Image>
+@{
+    Layout = "AdminLayout.cshtml";
+}
+
+<div class="shell">
+
+
+    <!-- Main -->
+    <div id="main">
+        <div class="cl">&nbsp;</div>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Box -->
+            <div class="box">
+                <!-- Box Head -->
+                <div class="box-head">
+                    <h2 class="left">Фотографии галереи</h2>
+                    <div class="right">
+                        <a href="/Webmaster/AddGallery" class="ico">Добавить фото</a>
+                        <!--<label>search articles</label>
+                        <input type="text" class="field small-field" />
+                        <input type="submit" class="button" value="search" />-->
+                    </div>
+                </div>
+                <!-- End Box Head -->
+                <!-- Table -->
+                @if (Model.Count() > 0)
+                {
+                    <div class="table">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th width="300" class="ac">Изображение</th>
+                                <th>Описание изображения</th>
+                                <th>Название</th>
+                                <th width="110" class="ac">Управление</th>
+                            </tr>
+                            @foreach (var img in Model)
+                            {
+                                <tr>
+                                    <td>@ViewBag.cloud.Api.UrlImgUp.Transform(new CloudinaryDotNet.Transformation().Width(300).Height(250).Crop("scale")).BuildImageTag(img.PublicId)</td>
+                                    <td><h3>@img.Description</h3></td>
+                                    <td><h3>@img.PublicId</h3></td>
+                                    <td><a href="/Webmaster/DeleteGallery/@img.Id" class="ico del" onclick="return confirm('Удаляем фото?')">Удалить</a><a href="/Webmaster/EditGallery/@img.Id" class="ico edit">Редактировать</a></td>
+                                </tr>
+                            }
+                        </table>
+                        
+                    </div>
+                <!-- Table -->
+                }
+                else
+                {
+                    <div class="alert-warning">
+                        Вы еще не загрузили фотографии в галлерею
+                    </div>
+                }
+                <!-- Table -->
+
+            </div>
+            <!-- End Box -->
+            <!-- Box -->
+            <div class="box">
+
+            </div>
+            <!-- End Box -->
+
+        </div>
+        <!-- End Content -->
+
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <!-- Main -->
+</div>

@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Artisan.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CloudName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">artisan-test</Value>
+    </Setting>
+    <Setting Name="ApiKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">218818773618386</Value>
+    </Setting>
+    <Setting Name="ApiSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">YJbE3YFpPqFc0B7PUgOgHVErHIE</Value>
+    </Setting>
+    <Setting Name="EmailFrom" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">wantedy1988@mail.ru</Value>
+    </Setting>
+    <Setting Name="EmailPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">aimonline</Value>
+    </Setting>
+    <Setting Name="SmtpServer" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">smtp.mail.ru</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

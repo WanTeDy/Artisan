@@ -1,0 +1,91 @@
+﻿@model PagedList.IPagedList<Artisan.Models.Image>
+@using PagedList.Mvc;
+
+<link rel="stylesheet" type="text/css" href="~/Content/PagedList.css">
+<link rel="stylesheet" type="text/css" href="~/Content/fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="~/Scripts/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="~/Scripts/jquery.fancybox-1.2.1.pack.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("a.first").fancybox();
+        $("a.two").fancybox();
+        $("a.video").fancybox({ "frameWidth": 520, "frameHeight": 400 });
+        $("a.content").fancybox({ "frameWidth": 600, "frameHeight": 300 });
+    });
+</script>
+
+<div class="container">
+    <div class="gallery">
+        <div class="way">
+            <div class="wayway">
+                <a href="/">Главная</a>
+                <pre> </pre>
+                <p>/</p>
+                <pre> </pre>
+                <a href="#">Галерея</a>
+            </div>
+        </div>
+        <div align="center">
+            <ul>
+                @if (Model.Count() > 0)
+                {
+                    string s = "";
+                    foreach (var img in Model)
+                    {
+                        s = img.PublicId + ".jpg";
+                        <li><a class="two" rel="group" title="Распашные Ворота" href="http://res.cloudinary.com/artisan-test/image/upload/@s"> @ViewBag.cloud.Api.UrlImgUp.BuildImageTag(img.PublicId) </a></li>
+                    }
+                }
+                else
+                {
+                    <li>Извините, фотографии отсутствуют</li>
+                }
+            </ul>
+        </div>
+        <div class="pagination_1">
+            <ul id="pagination-flickr">
+                @if (Model.HasPreviousPage)
+                {
+                    <li class="previous"><a href="/Gallery/Index/@(Model.PageNumber - 1)">« Previous</a></li>
+                    <li class="previous"><a href="/Gallery/Index/@(Model.PageNumber - 1)">@(Model.PageNumber - 1)</a></li>
+                    <li class="active">@Model.PageNumber</li>
+                }
+                else
+                {
+                    <li class="previous-off">« Previous</li>
+                    <li class="active">@Model.PageNumber</li>
+                }
+                @{int i = 0;}
+                @while (i++ < 3 && Model.PageNumber + i <= Model.PageCount)
+                {
+                    <li><a href="/Gallery/Index/@(Model.PageNumber + i)">@(Model.PageNumber + i)</a></li>
+                }
+                @if (Model.HasNextPage)
+                {
+                    <li class="next"><a href="/Gallery/Index/@(Model.PageNumber + 1)">Next »</a></li>
+                }
+                else
+                {
+                    <li class="next-off">Next »</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="h2">
+        <h2>Наши партнеры</h2>
+    </div>
+</div>
+
+<div class="container">
+    <div class="partners">
+        <a href="/Partners/Index"><img src="~/Content/image/ALUTECH.png"></a>
+        <a href="/Partners/Index"><img src="~/Content/image/HORMANN.png"></a>
+        <a href="/Partners/Index"><img src="~/Content/image/CAME.png"></a>
+        <a href="/Partners/Index"><img src="~/Content/image/FAAC.png"></a>
+        <a href="/Partners/Index"><img src="~/Content/image/NICE.png"></a>
+
+    </div>
+</div>

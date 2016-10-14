@@ -1,0 +1,83 @@
+﻿@model Artisan.Models.Product
+@{
+    Layout = "AdminLayout.cshtml"; 
+ }
+
+<div class="shell">
+
+
+    <!-- Main -->
+    <div id="main">
+        <div class="cl">&nbsp;</div>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Box -->
+            <div class="box">
+                <!-- Box Head -->
+                <div class="box-head">
+                    <h2 class="left">Новый продукт</h2>                    
+                </div>
+                <!-- End Box Head -->
+                @using (Html.BeginForm("AddProduct", "Webmaster", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    <fieldset>
+                        <legend>Продукт</legend>
+                        @Html.AntiForgeryToken()
+                        <p>
+                            Название <br />
+                            @Html.EditorFor(model => model.Name)
+                            @Html.ValidationMessageFor(model => model.Name, "")
+                        </p>
+
+                         <p>
+                            Категория <br />
+                            @Html.DropDownListFor(model => model.CategoryId, ViewBag.Categories as SelectList)
+                            @Html.ValidationMessageFor(model => model.CategoryId, "")
+                        </p>
+
+                        <p>
+                            Цена <br />
+                            @Html.EditorFor(model => model.Price)
+                            @Html.ValidationMessageFor(model => model.Price, "")
+                        </p>
+
+                        <p>
+                            Описание <br />
+                            @Html.TextAreaFor(model => model.Description, new { @COLS = "60", ROWS = "10"})
+                            @Html.ValidationMessageFor(model => model.Description, "")
+                        </p>
+
+                        <p>
+                            Описание изображения <br />
+                            <input type="text" name="imgDescription" value="@ViewBag.Description"/>
+                            @ViewBag.Error
+                        </p>
+                       
+                        <p>
+                            Изображение  <br />
+                            <input type="file" accept="image/*" class="buttons" name="upload" /><br>
+                        </p>
+                        <p>
+                            <input type="submit" class="buttons" value="Добавить" />
+                        </p>
+                    </fieldset>
+                }
+
+            </div>
+            <!-- End Box -->
+            <!-- Box -->
+            <div class="box">
+
+            </div>
+            <!-- End Box -->
+
+        </div>
+        <!-- End Content -->
+
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <!-- Main -->
+</div>

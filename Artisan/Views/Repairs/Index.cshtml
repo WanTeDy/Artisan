@@ -1,0 +1,52 @@
+﻿@model Artisan.Models.Mail
+<div class="container">
+    <div class="feedbackform">
+        <div class="way">
+            <div class="wayway">
+                <a href="/">Главная</a>
+                <pre> </pre>
+                <p>/</p>
+                <pre> </pre>
+                <a href="#">Ремонт</a>
+            </div>
+        </div>
+        <div class="text_repair">
+            <p>
+                Компания "Артисан" предлагает профессиональный ремонт всех видов автоматики для ворот (автоматика для гаражных, распашных и откатных ворот), ремонт различных комплектующих для автоматики (пульты, фотоэлементы и т.д.) в Одессе и Одесской области. Наши специалисты в короткие сроки проведут осмотр, диагностику и ремонт автоматики.
+                Как правило приводы ломаются из-за перепадов напряжения (автоматика предназначена для работы при напряжении 220В с отклонением напряжения в 10%). Для того, чтобы правильно установить и в дальнейшем устранить причину поломки нужно вызвать специалиста на объект. Это можно сделать позвонив нам по номеру +380632666010 или заполнив форму. Обратите внимание, что по телефону заявки принимаются с 10.00 до 18.00 с понедельника по пятницу.
+            </p>
+            <p>Специалист службы ремонта свяжется с Вами после обработки заявки. Служба действительна с 10.00 до 18.00 с понедельника по пятницу.</p>
+        </div>
+        <div class="form">            
+                @using (Html.BeginForm("Index", "Repairs", FormMethod.Post, new { @id = "application" }))
+                {
+                    @Html.TextBoxFor(model => model.Name, new { @placeholder = "Введите ваше имя", @id = "applicationName", @maxlength = "20" })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+
+                    @Html.TextBoxFor(model => model.EmailTo, new { @placeholder = "Введите ваш E-mail", @id = "applicationEmail", @maxlength = "35" })
+                    @Html.ValidationMessageFor(model => model.EmailTo, "", new { @class = "text-danger" })
+
+
+                    @Html.TextBoxFor(model => model.Telephone, new { @placeholder = "Введите ваш телефон", @id = "applicationTelephone", @maxlength = "13" })
+                    @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+
+                    <div class="select">
+                        <p>
+                            <select name="Producer" id="Producer" >
+                                <option selected="selected" disabled> Производитель автоматики... ▽</option>
+                                <option value="CAME">CAME</option>
+                                <option value="NICE">NICE</option>
+                                <option value="FAAC">FAAC</option>
+                                <option value="other">Другой производитель</option>
+                            </select>
+                        </p>
+                    </div>
+                    @ViewBag.Error
+                    @Html.TextAreaFor(model => model.Message, new { @placeholder = "Описание проблемы", @id = "applicationText", @rows = "10", @cols = "45" })
+
+                    <input class="applicationButton" data-type="submit" type="submit" value="Отправить заявку" />
+                }
+        </div>
+    </div>
+</div>

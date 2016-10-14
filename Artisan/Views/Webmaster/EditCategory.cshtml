@@ -1,0 +1,78 @@
+﻿@model Artisan.Models.Category
+@{
+    Layout = "AdminLayout.cshtml"; 
+ }
+
+<div class="shell">
+
+
+    <!-- Main -->
+    <div id="main">
+        <div class="cl">&nbsp;</div>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Box -->
+            <div class="box">
+                <!-- Box Head -->
+                <div class="box-head">
+                    <h2 class="left">Редактирование категории "@Model.Name"</h2>                    
+                </div>
+                <!-- End Box Head -->
+                @using (Html.BeginForm("EditCategory", "Webmaster", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    <fieldset>
+                        <legend>Категория</legend>
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.HiddenFor(model => model.ImageId)
+                        <p>
+                            Название <br />
+                            @Html.EditorFor(model => model.Name)
+                            @Html.ValidationMessageFor(model => model.Name)
+                            @ViewBag.Message
+                        </p>
+
+                        <p>
+                            Описание <br />
+                            @Html.TextAreaFor(model => model.Description, new { @COLS = "60", ROWS = "10"})
+                            @Html.ValidationMessageFor(model => model.Description)
+                        </p>
+
+                        <p>
+                            Описание изображения <br />
+                            <input type="text" name="imgDescription" value="@Model.Image.Description" />
+                            @ViewBag.Error
+                        </p>
+
+                        <p>
+                            Изображение  <br />
+                            @if (Model.Image != null)
+                            {
+                            @ViewBag.cloud.Api.UrlImgUp.Transform(new CloudinaryDotNet.Transformation().Width(100).Height(100).Crop("fill")).BuildImageTag(Model.Image.PublicId)
+                            }
+                            <input type="file" accept="image/*" class="buttons" name="upload" /><br>
+                        </p>
+                        <p>
+                            <input type="submit" class="buttons" value="Редактировать" />
+                        </p>
+                    </fieldset>
+                }
+
+            </div>
+            <!-- End Box -->
+            <!-- Box -->
+            <div class="box">
+
+            </div>
+            <!-- End Box -->
+
+        </div>
+        <!-- End Content -->
+
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <!-- Main -->
+</div>

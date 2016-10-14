@@ -1,0 +1,61 @@
+﻿@model Artisan.Models.Image 
+@{
+    Layout = "AdminLayout.cshtml";
+}
+
+<div class="shell">
+
+
+    <!-- Main -->
+    <div id="main">
+        <div class="cl">&nbsp;</div>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Box -->
+            <div class="box">
+                <!-- Box Head -->
+                
+                @using (Html.BeginForm("EditGallery", "Webmaster", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    <fieldset>
+                        <legend>Редактирование фотографии</legend>
+                        @Html.AntiForgeryToken()
+
+                        <p>
+                            Описание изображения <br />
+                            <input type="text" name="Description" value="@Model.Description" />
+                            @ViewBag.Error
+                        </p>
+
+                        <p>
+                            Изображение  <br />
+
+                            @if (Model != null)
+                            {
+                                @ViewBag.cloud.Api.UrlImgUp.Transform(new CloudinaryDotNet.Transformation().Width(100).Height(100).Crop("fill")).BuildImageTag(Model.PublicId)
+                            }
+                            <input type="file" class="buttons" accept="image/*" name="upload" />@ViewBag.upload<br>
+                        </p>
+                        <p>
+                            <input type="submit" class="buttons" value="Редактировать" />
+                        </p>
+                    </fieldset>
+                }
+            </div>
+            <!-- End Box -->
+            <!-- Box -->
+            <div class="box">
+
+            </div>
+            <!-- End Box -->
+
+        </div>
+        <!-- End Content -->
+
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <!-- Main -->
+</div>

@@ -1,0 +1,107 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    Layout = null;
+    string url = Request.Url.AbsolutePath;
+    string[] s = { "Categor", "Product", "Galler" };
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/adminstyle.css")   
+    @Styles.Render("~/Content/reset.css")    
+</head>
+<body>
+    @if (User.Identity.IsAuthenticated)
+    {
+    <!-- Header -->
+        <div id="header">
+            <div class="shell">
+                <!-- Logo + Top Nav -->
+                <div id="top">
+                    <h1><a href="/Webmaster/Index">Artisan администрирование</a></h1>
+                    <div id="top-navigation">
+                        Добро пожаловать <strong>@User.Identity.GetUserName()</strong>
+                        <span>|</span>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Выход</a>
+
+                        @using (Html.BeginForm("LogOff", "Webmaster", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        }
+                    </div>
+                </div>
+                <!-- End Logo + Top Nav -->
+                <!-- Main Nav -->
+                <div id="navigation">
+                    <ul>
+                        @{ if (url.Contains(s[0]))
+                            {
+                                <li><a href="/Webmaster/Categories" class = "active">Категории</a></li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Категории", "Categories", "Webmaster")</li>
+                            }
+                        }                        
+                        @{ if (url.Contains(s[1]))
+                            {
+                                <li><a href="/Webmaster/Products" class="active">Продукты</a></li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Продукты", "Products", "Webmaster")</li>
+                            }
+                        }
+                        @{ if (url.Contains(s[2]))
+                            {
+                                <li><a href="/Webmaster/Gallery" class="active">Галерея</a></li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Галерея", "Gallery", "Webmaster")</li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <!-- End Main Nav -->
+            </div>
+        </div>
+
+                            }
+                            else
+                            {
+                                <div id="header">
+                                    <div class="shell">
+                                        <!-- Logo + Top Nav -->
+                                        <div id="top">
+                                            <h1><a href="/Webmaster/Index">Artisan администрирование</a></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+    <!-- End Header -->
+    <!-- Container -->
+    <div id="container">
+        <div class="shell">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- End Container -->
+    <!-- Footer -->
+    <div id="footer">
+        <div class="shell">
+            <span class="left">&copy; WebStudio</span>
+            <span class="right">
+                @Html.ActionLink("На главную", "Index", "Home")
+            </span>
+        </div>
+    </div>
+    <!-- End Footer -->
+
+</body>
+</html>
+@RenderSection("scripts", required: false)
+
+

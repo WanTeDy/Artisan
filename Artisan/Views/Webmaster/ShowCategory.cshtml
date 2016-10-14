@@ -1,0 +1,75 @@
+﻿@model Artisan.Models.Category
+@{
+    Layout = "AdminLayout.cshtml";
+}
+
+<div class="shell">
+
+
+    <!-- Main -->
+    <div id="main">
+        <div class="cl">&nbsp;</div>
+
+        <!-- Content -->
+        <div id="content">
+
+            <!-- Box -->
+            <div class="box">
+                <!-- Box Head -->
+                <div class="box-head">
+                    <h2 class="left">Просмотр категории "@Model.Name"</h2>
+                </div>
+                <!-- End Box Head -->
+
+                <p>
+                    <hr />
+                    Название <br />
+                    <hr/>
+                    @Model.Name
+
+                </p>
+
+                <p>
+                    <hr />
+                    Описание <br />
+                    <hr />
+                    @Model.Description
+                </p>
+
+                <p>
+                    <hr />
+                    Изображение  <br />
+                    <hr />
+                    @if (Model.Image != null)
+                    {
+                        @ViewBag.cloud.Api.UrlImgUp.Transform(new CloudinaryDotNet.Transformation().Width(100).Height(100).Crop("fill")).BuildImageTag(Model.Image.PublicId)
+                    }
+
+                </p>
+
+                <p>
+                    <hr />
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td><a href="/Webmaster/DeleteCategory/@Model.Id" class="ico del">Удалить</a><a href="/Webmaster/EditCategory/@Model.Id" class="ico edit">Редактировать</a></td>
+                        </tr>
+                    </table>
+                </p>
+
+
+            </div>
+            <!-- End Box -->
+            <!-- Box -->
+            <div class="box">
+
+            </div>
+            <!-- End Box -->
+
+        </div>
+        <!-- End Content -->
+
+
+        <div class="cl">&nbsp;</div>
+    </div>
+    <!-- Main -->
+</div>
